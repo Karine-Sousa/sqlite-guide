@@ -2,11 +2,11 @@
 
 ## Objetivo
 
-Aprender a utilizar funções agregadas para realizar cálculos e análises sobre os dados armazenados em tabelas.
+Aprender a realizar cálculos e análises utilizando funções agregadas.
 
 ---
 
-## Preparando o Ambiente
+## Base de Dados para Exemplos
 
 Crie a tabela:
 
@@ -19,7 +19,7 @@ CREATE TABLE alunos (
 );
 ```
 
-Insira os registros:
+Adicione os registros:
 
 ```sql
 INSERT INTO alunos (nome, idade, nota)
@@ -37,174 +37,189 @@ VALUES ('Carlos', 23, 6.5);
 
 ---
 
-## COUNT()
+## Contar Registros
 
-Conta a quantidade de registros.
-
-```sql
-SELECT COUNT(*) AS total_alunos
-FROM alunos;
-```*
-Resultado esperado: **4**
-
----
-
-*# SUM*)
-
-Soma os valores de uma coluna n*mérica.
+Consulta:
 
 ```sql
-SELECT SUM(nota) A* soma_notas
+SELECT COUNT(id) AS total_alunos
 FROM alunos;
 ```
 
-*esultado esperado: **31.5**
+Resultado esperado:
+
+```text
+4
+```
 
 ---
 
-*# AVG()
+## Somar Valores
 
-Calcula a média dos valor*s.
+Consulta:
 
 ```sql
-SELECT AVG(nota) AS med*a_notas
+SELECT SUM(nota) AS soma_notas
 FROM alunos;
 ```
 
-Resultad* esperado: **7.875**
+Resultado esperado:
+
+```text
+31.5
+```
 
 ---
 
-## MAX(*
+## Calcular Média
 
-Retorna o maior valor encontrado*
+Consulta:
 
 ```sql
-SELECT MAX(nota) AS maior*nota
+SELECT AVG(nota) AS media_notas
 FROM alunos;
 ```
 
-Resultado e*perado: **9.5**
+Resultado esperado:
 
----
-
-## MIN()
-
-Re*orna o menor valor encontrado.
-
-``*sql
-SELECT MIN(nota) AS menor_nota*FROM alunos;
+```text
+7.875
 ```
 
-Resultado espera*o: **6.5**
+---
+
+## Maior Valor
+
+Consulta:
+
+```sql
+SELECT MAX(nota) AS maior_nota
+FROM alunos;
+```
+
+Resultado esperado:
+
+```text
+9.5
+```
 
 ---
 
-## Utilizando Ali*s
+## Menor Valor
 
-Alias permite renomear colunas *xibidas no resultado.
+Consulta:
 
-```sql*SELECT AVG(nota)*AS media_da_turma
+```sql
+SELECT MIN(nota) AS menor_nota
 FROM alunos;
-```*
-Resultado esperado: **7.875**
+```
 
---*
+Resultado esperado:
 
-## GROUP BY
+```text
+6.5
+```
 
-O comando `GROUP BY* agrupa registros.
+---
 
-Crie a tabela:*
+## Renomeando Colunas
+
+Consulta:
+
+```sql
+SELECT AVG(nota) AS media_da_turma
+FROM alunos;
+```
+
+Resultado esperado:
+
+```text
+7.875
+```
+
+---
+
+## Agrupando Dados
+
+Crie a tabela:
+
 ```sql
 CREATE TABLE matriculas (
-*   id INTEGER PRIMARY KEY,
-   *curso TEXT,
-*   quantidade INTEGER
+    id INTEGER PRIMARY KEY,
+    curso TEXT,
+    quantidade INTEGER
 );
 ```
 
-Insi*a os dados:
+Insira os dados:
 
 ```sql
-INSERT INTO ma*riculas (curso, quantidade)
-VALUES*('ADS', 30);
+INSERT INTO matriculas (curso, quantidade)
+VALUES ('ADS', 30);
 
-INSERT INTO matricul*s (curso, quantidade)
-VALUES ('ADS*, 25);
+INSERT INTO matriculas (curso, quantidade)
+VALUES ('ADS', 25);
 
-INSERT INTO matriculas (cu*so, quantidade)
-VALUES ('Ciência d* Computação', 20);
+INSERT INTO matriculas (curso, quantidade)
+VALUES ('Ciência da Computação', 20);
 
-INSERT INTO ma*riculas (curso, quantidade)
-VALUES*('Ciência da Computação', 15);
-```*
-Consulta:
-
-```*ql*SELECT curso,
-       SUM(quantidad*) AS total_alunos
-FROM matriculas
-*ROUP BY curso;
+INSERT INTO matriculas (curso, quantidade)
+VALUES ('Ciência da Computação', 15);
 ```
 
-Resultado espe*ado:
-
-- ADS → 55
-- Ciência da Comp*tação → 35
-
----
-
-## HAVING
-
-O coma*do `HAVING` filtra os grupos criad*s pelo `GROUP BY`.
+Consulta:
 
 ```sql
-SELECT *urso,
-       SUM(quantidade) AS to*al_alunos
+SELECT curso,
+       SUM(quantidade) AS total_alunos
 FROM matriculas
-GROUP BY*curso
-HAVING SUM(quantidade) > 40;*```
+GROUP BY curso;
+```
 
 Resultado esperado:
 
-- ADS → *5
+```text
+ADS: 55
+Ciência da Computação: 35
+```
 
 ---
 
-## Relatório Completo
+## Filtrando Grupos
 
-```*ql
+Consulta:
+
+```sql
+SELECT curso,
+       SUM(quantidade) AS total_alunos
+FROM matriculas
+GROUP BY curso
+HAVING SUM(quantidade) > 40;
+```
+
+Resultado esperado:
+
+```text
+ADS: 55
+```
+
+---
+
+## Relatório Consolidado
+
+Consulta:
+
+```sql
 SELECT
-    COUNT(*) AS total_al*nos,
-    AVG(nota) AS media_notas,*    MAX(nota) AS maior_nota,
-    M*N(nota) AS menor_nota
-FROM alunos;*```
+    COUNT(id) AS total_alunos,
+    AVG(nota) AS media,
+    MAX(nota) AS maior_nota,
+    MIN(nota) AS menor_nota
+FROM alunos;
+```
 
 Resultado esperado:
 
-- Total *e alunos: 4
-- Média das notas: 7.8*5
-- Maior nota: 9.5
-- Menor nota: *.5
-
----
-
-*# Resumo
-
-- `COUNT()` → Conta regi*tros
-- `SUM*)` → Soma valores
-- `AVG()` → Calc*la média
--*`*AX()` → Retorna o maior valor
-- `M*N()` → Retorna o menor valor
-- `GR*UP BY` → Agrupa registros
-- `HAVIN*` → Filtra grupos
-
----
-
-## Exercíc*os Práticos
-
-1. Conte a quantidade*de alunos cadastrados.
-2. Calcule * média das notas.
-3. Descubra a ma*or nota.
-4. Descubra a menor nota.*5. Calcule a soma das notas.
-6. Mo*te um relatório utilizando todas a*
+```text
+Total de alunos: 4
+Média: 7.875
