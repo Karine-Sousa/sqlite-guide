@@ -2,20 +2,20 @@
 
 ## Objetivo
 
-Aprender a consultar, filtrar, atualizar e excluir dados armazenados em tabelas utilizando comandos SQL básicos.
+Aprender a consultar, filtrar, ordenar, atualizar e excluir dados em uma tabela utilizando os principais comandos SQL.
 
 ---
 
 ## Pré-requisitos
 
-Antes de iniciar, você deve ter:
+Antes de iniciar, certifique-se de que:
 
-- SQLite instalado
-- Banco de dados criado
-- Tabela `alunos` criada
-- Alguns registros cadastrados
+- O SQLite está instalado.
+- O banco de dados foi criado.
+- A tabela `alunos` já existe.
+- Há registros cadastrados na tabela.
 
-Exemplo:
+Exemplo de registros:
 
 ```sql
 INSERT INTO alunos (nome, curso)
@@ -32,13 +32,13 @@ VALUES ('Ana Souza', 'ADS');
 
 ## Consultando Todos os Registros
 
-Para visualizar todos os registros da tabela:
+Para visualizar todos os dados da tabela:
 
 ```sql
 SELECT * FROM alunos;
 ```
 
-Resultado:
+### Resultado Esperado
 
 ```text
 id | nome         | curso
@@ -52,14 +52,14 @@ id | nome         | curso
 
 ## Consultando Colunas Específicas
 
-Para exibir apenas determinadas colunas:
+Para exibir apenas determinadas informações:
 
 ```sql
 SELECT nome, curso
 FROM alunos;
 ```
 
-Resultado:
+### Resultado Esperado
 
 ```text
 nome         | curso
@@ -73,7 +73,7 @@ Ana Souza    | ADS
 
 ## Filtrando Registros com WHERE
 
-Para localizar alunos de um curso específico:
+Para localizar apenas alunos de um curso específico:
 
 ```sql
 SELECT *
@@ -81,7 +81,7 @@ FROM alunos
 WHERE curso = 'ADS';
 ```
 
-Resultado:
+### Resultado Esperado
 
 ```text
 1 | Maria Silva | ADS
@@ -112,7 +112,7 @@ ORDER BY nome DESC;
 
 ## Limitando a Quantidade de Resultados
 
-Exibir apenas os dois primeiros registros:
+Para exibir apenas os dois primeiros registros:
 
 ```sql
 SELECT *
@@ -120,7 +120,7 @@ FROM alunos
 LIMIT 2;
 ```
 
-Resultado:
+### Resultado Esperado
 
 ```text
 1 | Maria Silva | ADS
@@ -131,7 +131,7 @@ Resultado:
 
 ## Atualizando Dados
 
-Alterar o curso de um aluno:
+Para alterar informações já cadastradas:
 
 ```sql
 UPDATE alunos
@@ -139,36 +139,38 @@ SET curso = 'Sistemas para Internet'
 WHERE id = 1;
 ```
 
-Verificar atualização:
+Para verificar a alteração:
 
 ```sql
 SELECT * FROM alunos;
 ```
 
-Resultado:
+### Resultado Esperado
 
 ```text
 1 | Maria Silva | Sistemas para Internet
+2 | João Santos | Ciência da Computação
+3 | Ana Souza   | ADS
 ```
 
 ---
 
 ## Excluindo Registros
 
-Excluir um aluno:
+Para remover um registro da tabela:
 
 ```sql
 DELETE FROM alunos
 WHERE id = 3;
 ```
 
-Consultar novamente:
+Para confirmar a exclusão:
 
 ```sql
 SELECT * FROM alunos;
 ```
 
-Resultado:
+### Resultado Esperado
 
 ```text
 1 | Maria Silva | Sistemas para Internet
@@ -179,86 +181,94 @@ Resultado:
 
 ## Consultando Valores Únicos
 
-Exibir apenas cursos sem repetição:
+Para listar apenas valores sem repetição:
 
 ```sql
 SELECT DISTINCT curso
 FROM alunos;
 ```
 
-Resultado:
+### Resultado Esperado
 
 ```text
-ADS
-Ciência da Computação
 Sistemas para Internet
+Ciência da Computação
+ADS
 ```
 
 ---
 
 ## Contando Registros
 
-Para verificar quantos alunos estão cadastrados na tabela, utilize a função `COUNT()`.
-
-### Exemplo
+Para verificar quantos registros existem na tabela:
 
 ```sql
 SELECT COUNT(*) AS total_alunos
 FROM alunos;
-```*
+```
+
 ### Resultado Esperado
 
 ```text
-t*tal_alunos
+total_alunos
 ------------
-2
+3
 ```
 
-* função `COUNT(*)` conta todas as linhas da tabela e retorna a quantidade total de registros.
+A função `COUNT(*)` retorna a quantidade total de registros da tabela.
 
 ---
 
 ## Resumo dos Comandos
 
-| Comando | Função |
-|----------|-------*--|
+| Comando | Finalidade |
+|----------|------------|
 | SELECT | Consultar dados |
-|*WHERE | Filtrar registros |
-| ORDE* BY | Ordenar resultados |
-| LIMIT*| Limitar resultados |
-| UPDATE*| Atualizar registros |
-| DELETE |*Excluir registros |
-| DISTINCT | R*mover duplicidades |
-| COUNT | Con*ar registros |
+| WHERE | Filtrar registros |
+| ORDER BY | Ordenar resultados |
+| LIMIT | Limitar a quantidade de resultados |
+| UPDATE | Atualizar registros |
+| DELETE | Excluir registros |
+| DISTINCT | Remover duplicidades |
+| COUNT | Contar registros |
 
 ---
 
-##*Exercício Proposto
+## Exercícios Práticos
 
-1.*Liste todos os alunos cadastrados.*2. Exiba apenas os nomes dos aluno*.
-3. Filtre os alunos do curso ADS*
-4. Ordene os alunos por nome.
-5. *tualize o curso de um aluno.
-6. Ex*lua um registro.
-7. Conte quantos *lunos existem cadastrados.
+1. Liste todos os alunos cadastrados.
+2. Exiba apenas os nomes dos alunos.
+3. Filtre apenas os alunos do curso ADS.
+4. Ordene os alunos em ordem alfabética.
+5. Atualize o curso de um aluno.
+6. Exclua um registro.
+7. Conte quantos alunos estão cadastrados.
 
 ---
 
-#* Próximos Passos
+## Boas Práticas
 
-Continue para*
+- Sempre utilize o comando `WHERE` ao executar `UPDATE` ou `DELETE`.
+- Verifique os dados antes de alterar ou excluir registros.
+- Utilize nomes de tabelas e colunas claros e padronizados.
+- Teste suas consultas em ambientes de estudo antes de executá-las em produção.
+
+---
+
+## Próximos Passos
+
+Continue para o arquivo:
 
 ```text
 05-funcoes-agregadas.md
-*``
+```
 
-Neste*próximo capítulo serão apresentado*:
+No próximo capítulo serão apresentadas as funções:
 
 - COUNT()
+- SUM()
 - AVG()
-- SUM*)
 - MAX()
-* MIN()
+- MIN()
 
-Ess*s funções são amplamente utilizada* em consultas analíticas e*geração de relatórios.
-````*
+Essas funções são essenciais para geração de relatórios e análise de dados.
