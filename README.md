@@ -1,9 +1,5 @@
 # Guia Completo de SQLite para Iniciantes
 
-![SQLite](https://img.shields.io/badge/SQLite-Databasee=for-the-badge
-![SQL](https://img.shields.io/badge/rning-green?style=for-the-badge
-![Documentation](https://img.shields.io/badge/Technical-Documentation-orange?styleMarkdown](https://img.shields.io/badge/Markdown?style=for-the-badge
-
 ## Sobre o Projeto
 
 Este projeto apresenta uma documentação técnica completa sobre SQLite voltada para estudantes, iniciantes em banco de dados e profissionais em formação.
