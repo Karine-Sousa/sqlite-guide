@@ -198,62 +198,67 @@ Sistemas para Internet
 
 ## Contando Registros
 
-Verificar quantos alunos existem na tabela:
+Para verificar quantos alunos estão cadastrados na tabela, utilize a função `COUNT()`.
+
+### Exemplo
 
 ```sql
-SELECT COUNT(*)
+SELECT COUNT(*) AS total_alunos
 FROM alunos;
-```
-
-Resultado:
+```*
+### Resultado Esperado
 
 ```text
-2*```
+t*tal_alunos
+------------
+2
+```
+
+* função `COUNT(*)` conta todas as linhas da tabela e retorna a quantidade total de registros.
 
 ---
 
 ## Resumo dos Comandos
 
-* Comando | Função |
-|----------|--*-------|
-| SELECT | Consultar dado* |
-| WHERE | Filtrar registros |
-|*ORDER BY | Ordenar resultados |
-| *IMIT | Limitar resultados |
-| UPDA*E | Atualizar registros |
-| DELETE*| Excluir registros |
-| DISTINCT |*Remover duplicidades |
-| COUNT | C*ntar registros |
+| Comando | Função |
+|----------|-------*--|
+| SELECT | Consultar dados |
+|*WHERE | Filtrar registros |
+| ORDE* BY | Ordenar resultados |
+| LIMIT*| Limitar resultados |
+| UPDATE*| Atualizar registros |
+| DELETE |*Excluir registros |
+| DISTINCT | R*mover duplicidades |
+| COUNT | Con*ar registros |
 
 ---
 
-## Exercíci* Proposto
+##*Exercício Proposto
 
-Realize as seguintes co*sultas:
-
-1. Liste todos os alunos.*2. Exiba apenas os nomes dos aluno*.
-3. Filtre alunos do curso ADS.
-4* Ordene os alunos por nome.
-5. Atu*lize o curso de um aluno.
-6. Exclu* um registro.
-7. Conte quantos alu*os existem cadastrados.
+1.*Liste todos os alunos cadastrados.*2. Exiba apenas os nomes dos aluno*.
+3. Filtre os alunos do curso ADS*
+4. Ordene os alunos por nome.
+5. *tualize o curso de um aluno.
+6. Ex*lua um registro.
+7. Conte quantos *lunos existem cadastrados.
 
 ---
 
-## P*óximos Passos
+#* Próximos Passos
 
-Continue para:
+Continue para*
 
-```*ext
+```text
 05-funcoes-agregadas.md
-```
+*``
 
-N*le serão apresentados:
+Neste*próximo capítulo serão apresentado*:
 
 - COUNT()
-* AVG()
-- SUM()
+- AVG()
+- SUM*)
 - MAX()
-- MIN()
+* MIN()
 
-Es*as funções são amplamente utilizad*s em relatórios e análises de dado*.
+Ess*s funções são amplamente utilizada* em consultas analíticas e*geração de relatórios.
+````*
